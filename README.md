@@ -5,6 +5,7 @@
 - 📫 How to reach me ...
 https://raw.githubusercontent.com/vfarid/v2ray-worker-sub/v1.6/dist/index.js
 <!---
+_worker.js
 Re123123/Re123123 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
