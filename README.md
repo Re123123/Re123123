@@ -2963,4 +2963,36 @@ clash-meta
 ---------------------------------------------------------------
 ################################################################
 `;https://fastly.jsdelivr.net/gh/jsvpn/jsproxy@dev/baitai/20200329/1302338.md
+}#!/bin/sh /etc/rc.common
+  
+USE_PROCD=1
+
+START=99
+STOP=99
+
+# SERVICE_DAEMONIZE=1
+# SERVICE_WRITE_PID=1
+
+CONF=/opt/V2Ray/config.json
+EXEC=/opt/V2Ray/v2ray
+
+start_service() {
+  procd_open_instance
+  procd_set_param command $EXEC run -config=$CONF
+  procd_set_param file $CONF
+  procd_set_param user v2ray
+  # procd_set_param respawn # respawn automatically if something died, be careful if you have an alternative process supervisor
+  procd_close_instance
+}
+
+start() {
+        service_start $EXEC
+}
+
+stop() {
+        service_stop $EXEC
+}
+
+reload() {
+        service_reload $EXEC
 }
