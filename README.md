@@ -120,7 +120,19 @@ EXPLORE_FORM_DATA_CACHE_CONFIG = {
     'CACHE_REDIS_PORT': 6379,
     'CACHE_REDIS_DB': 3,
     'CACHE_REDIS_URL': SUPERSET_CACHE_REDIS_URL
-}👋 Hi, I’m @Re123123
+}2023-10-16 23:00:36,131:INFO:superset.utils.logging_configurator:logging was configured successfully
+Oct 16 23:00:36 ip-172-31-123-70 superset[46050]: 2023-10-16 23:00:36,138:INFO:root:Configured event logger of type <class 'superset.utils.log.DBEventLogger'>
+Oct 16 23:00:37 ip-172-31-123-70 superset[46050]: /home/ubuntu/venv/lib/python3.8/site-packages/flask_appbuilder/models/sqla/interface.py:64: SAWarning: relationship SqlaTable.slices' will copy column tables.id to column slices.datasource_id, which conf>conflicts with relationship(s): 'Slice.table' (copies tables.id to slices.datasource_id). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="table"' to the 'SqlaTable.slices' relationship. (Background on this error at: https://sqlalche.me/e/14/qzyx)
+Oct 16 23:00:37 ip-172-31-123-70 superset[46050]:   for prop in class_mapper(obj).iterate_properties:
+Oct 16 23:00:37 ip-172-31-123-70 superset[46050]: 2023-10-16 23:00:37,898:WARNING:werkzeug: * Debugger is active!
+Oct 16 23:00:37 ip-172-31-123-70 superset[46050]: 2023-10-16 23:00:37,898:INFO:werkzeug: * Debugger PIN: 685-206-655
+Oct 16 23:00:41 ip-172-31-123-70 superset[46050]: 2023-10-16 23:00:41,582:INFO:werkzeug:172.31.122.186 - - [16/Oct/2023 23:00:41] "GET / HTTP/1.1" 302 -
+Oct 16 23:00:50 ip-172-31-123-70 superset[46050]: 2023-10-16 23:00:50,511:INFO:werkzeug:172.31.97.139 - - [16/Oct/2023 23:00:50] "GET / HTTP/1.1" 302 -
+Oct 16 23:01:06 ip-172-31-123-70 superset[46050]: 2023-10-16 23:01:06,890:INFO:werkzeug:172.31.122.186 - - [16/Oct/2023 23:01:06] "GET / HTTP/1.1" 302 -
+Oct 16 23:01:11 ip-172-31-123-70 superset[46050]: 2023-10-16 23:01:11,585:INFO:werkzeug:172.31.122.186 - - [16/Oct/2023 23:01:11] "GET / HTTP/1.1" 302 -
+Oct 16 23:01:20 ip-172-31-123-70 superset[46050]: 2023-10-16 23:01:20,526:INFO:werkzeug:172.31.97.139 - - [16/Oct/2023 23:01:20] "GET / HTTP/1.1" 302 -
+Oct 16 23:01:32 ip-172-31-123-70 superset[46050]: 2023-10-16 23:01:32,546:INFO:werkzeug:104.28.252.29 - - [16/Oct/2023 23:01:32] "GET / HTTP/1.1" 302 -
+Oct 16 23:01:32 ip-172-31-123-70 superset[46050]: Class 'werkzeug.local.LocalProxy' is not mapped👋 Hi, I’m @Re123123
 - 👀 I’m interested in ...
 - 🌱 I’m currently learning ...
 - 💞️ I’m looking to collaborate on ...
