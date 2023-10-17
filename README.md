@@ -78,7 +78,49 @@ RedisSecurityGroup:
       TransitEncryptionEnabled: True
       UserGroupIds:
         - !Ref RedisUserGrouphttp://127.0.0.1:25500/sub?target=%TARGET%&url=%URL%&config=%CONFIG%
-- 👋 Hi, I’m @Re123123
+- REDIS_PASSWORD = 'fRX0nEHjiUuTp68RL56Fk7VJ09739dLF'
+REDIS_SERVER_IP = 'someurl.amazonaws.com'
+SUPERSET_CACHE_REDIS_URL = "".join(['redis://:', REDIS_PASSWORD, '@', REDIS_SERVER_IP, ':6379/1'])
+
+CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 84600,
+    'CACHE_KEY_PREFIX': 'superset_config_',
+    'CACHE_REDIS_HOST': REDIS_SERVER_IP,
+    'CACHE_REDIS_PORT': 6379,
+    'CACHE_REDIS_DB': 0,
+    'CACHE_REDIS_URL': SUPERSET_CACHE_REDIS_URL
+}
+
+DATA_CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 84600,
+    'CACHE_KEY_PREFIX': 'superset_data_',
+    'CACHE_REDIS_HOST': REDIS_SERVER_IP,
+    'CACHE_REDIS_PORT': 6379,
+    'CACHE_REDIS_DB': 1,
+    'CACHE_REDIS_URL': SUPERSET_CACHE_REDIS_URL
+}
+
+FILTER_STATE_CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 84600,
+    'CACHE_KEY_PREFIX': 'superset_filter_',
+    'CACHE_REDIS_HOST': REDIS_SERVER_IP,
+    'CACHE_REDIS_PORT': 6379,
+    'CACHE_REDIS_DB': 2,
+    'CACHE_REDIS_URL': SUPERSET_CACHE_REDIS_URL
+}
+
+EXPLORE_FORM_DATA_CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 84600,
+    'CACHE_KEY_PREFIX': 'superset_explore_',
+    'CACHE_REDIS_HOST': REDIS_SERVER_IP,
+    'CACHE_REDIS_PORT': 6379,
+    'CACHE_REDIS_DB': 3,
+    'CACHE_REDIS_URL': SUPERSET_CACHE_REDIS_URL
+}👋 Hi, I’m @Re123123
 - 👀 I’m interested in ...
 - 🌱 I’m currently learning ...
 - 💞️ I’m looking to collaborate on ...
