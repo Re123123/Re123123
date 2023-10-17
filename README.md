@@ -1,4 +1,4 @@
-RedisSecurityGroup:
+https://patch-diff.githubusercontent.com/raw/apache/superset/pull/25671.patchRedisSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties: 
       GroupDescription: "Security group for Redis"
