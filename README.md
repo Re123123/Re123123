@@ -1,4 +1,83 @@
-http://127.0.0.1:25500/sub?target=%TARGET%&url=%URL%&config=%CONFIG%
+RedisSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupDescription: "Security group for Redis"
+      VpcId: !Ref VpcId
+      SecurityGroupIngress: 
+        - IpProtocol: tcp
+          FromPort: '6379'
+          ToPort: '6379'
+          SourceSecurityGroupId: !Ref EC2SecurityGroup
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 0
+          ToPort: 65535
+          CidrIp: 0.0.0.0/0
+  RedisSubnetGroup:
+    Type: AWS::ElastiCache::SubnetGroup
+    Properties:
+      CacheSubnetGroupName: analytics-test-subnet
+      Description: "Cache Subnet Group for analytics test redis"
+      SubnetIds:
+        - !Ref SubnetId
+        - !Ref SubnetId2
+  RedisUser:
+    Type: AWS::ElastiCache::User
+    Properties: 
+      Engine: 'redis'
+      AccessString: 'on ~* +@all'
+      AuthenticationMode: 
+        { Type: iam }
+      UserId: 'supersettestuser' # UserId == UserName when AutheticationMode == iam
+      UserName: 'supersettestuser'
+  RedisDefaultUser:
+    Type: AWS::ElastiCache::User
+    Properties:
+      Engine: 'redis'
+      UserId: 'supersettestdefault'
+      UserName: 'default'
+      AccessString: 'off -@all'
+      AuthenticationMode: 
+        { 
+        Type: password,
+        Passwords: ["fRX0nEHjiUuTp68RL56Fk7VJ09739dLF"]
+        }
+  RedisUserGroup:
+    Type: AWS::ElastiCache::UserGroup
+    Properties: 
+      Engine: 'redis'
+      UserGroupId: "supersettestgroup"
+      UserIds:
+        - !Ref RedisDefaultUser
+        - !Ref RedisUser
+  Redis:
+    Type: AWS::ElastiCache::ReplicationGroup
+    Properties: 
+      AtRestEncryptionEnabled: True
+      AutomaticFailoverEnabled: False # Automatic failover requires 2 or more cache clusters. Create more cache clusters or disable automatic failover.
+      AutoMinorVersionUpgrade: True
+      AuthToken: fRX0nEHjiUuTp68RL56Fk7VJ09739dLF
+      CacheNodeType: cache.t4g.micro
+      # CacheParameterGroupName: default.redis7.cluster.on
+      CacheSubnetGroupName: !Ref RedisSubnetGroup
+      ClusterMode: Disabled
+      DataTieringEnabled: False
+      Engine: Redis
+      EngineVersion: 7.0
+      IpDiscovery: ipv4
+      MultiAZEnabled: False
+      NetworkType: ipv4
+      NumCacheClusters: 1
+      #NumNodeGroups: 0 # Number of shards for Cluster mode Enabled
+      Port: 6379
+      #ReplicasPerNodeGroup: 0 # additional node not including the primary node for   Clusteer mode Enabled
+      ReplicationGroupId: analytics-test-redis
+      ReplicationGroupDescription: "Redis analytics test"
+      SecurityGroupIds: 
+        - !Ref RedisSecurityGroup
+      TransitEncryptionEnabled: True
+      UserGroupIds:
+        - !Ref RedisUserGrouphttp://127.0.0.1:25500/sub?target=%TARGET%&url=%URL%&config=%CONFIG%
 - 👋 Hi, I’m @Re123123
 - 👀 I’m interested in ...
 - 🌱 I’m currently learning ...
