@@ -3885,3 +3885,4 @@ clash-meta
 ################################################################
 `;
 }
+https://raw.githubusercontent.com/guoxing123/cc/main/kjwl20231019x.txt
